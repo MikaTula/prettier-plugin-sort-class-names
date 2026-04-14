@@ -2,6 +2,10 @@
 
 Per default it will sort your class names alphabetically.
 
+Fork of @fuzed/prettier-plugin-sort-class-names
+
+Update for new prettier 
+
 ## install
 
 Prettier should already be set up for your project ([check prettier docs](https://prettier.io/docs/en/install.html)). After that it is enough to install `prettier-plugin-sort-class-names` in the same project, it will be applied automatically.
