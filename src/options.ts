@@ -34,4 +34,11 @@ export default {
 		description:
 			'Comma separated list of function names to sort classes in arguments.',
 	},
+	sortClassNamesRemoveDuplicates: {
+		type: 'boolean',
+		category: 'Global',
+		default: false,
+		description:
+			'Remove duplicate class names while sorting. This only removes exact duplicate tokens.',
+	},
 }

@@ -1,10 +1,15 @@
-import prettierParserTypescript from 'prettier/parser-typescript'
 import functionCalls from '../node-formatters/function-calls'
 import functionTemplates from '../node-formatters/function-templates'
 import jsxAttributes from '../node-formatters/jsx-attributes'
 import twin from '../node-formatters/twin'
 import { CreateSortClassList, SortClassList } from '../sort-class-list'
 import loopNodes from '../utils/loop-nodes'
+import loadPrettierParser from '../utils/load-prettier-parser'
+
+const prettierParserTypescript = loadPrettierParser(
+	'prettier/plugins/typescript',
+	'prettier/parser-typescript'
+)
 
 export default (cscl: CreateSortClassList) => ({
 	...prettierParserTypescript.parsers.typescript,

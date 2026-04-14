@@ -1,9 +1,14 @@
-import prettierParserBabel from 'prettier/parser-babel'
 import functionCalls from '../node-formatters/function-calls'
 import functionTemplates from '../node-formatters/function-templates'
 import jsxAttributes from '../node-formatters/jsx-attributes'
 import { CreateSortClassList, SortClassList } from '../sort-class-list'
 import loopNodes from '../utils/loop-nodes'
+import loadPrettierParser from '../utils/load-prettier-parser'
+
+const prettierParserBabel = loadPrettierParser(
+	'prettier/plugins/babel',
+	'prettier/parser-babel'
+)
 
 export default (cscl: CreateSortClassList) => ({
 	...prettierParserBabel.parsers.babel,

@@ -51,6 +51,7 @@ you can add this options to your [prettier config file](https://prettier.io/docs
 | sortClassNamesUnknownClassesSeparator | When your class list contains known (in your order-file) and unknown class names, it will be separated by this char. You can disable this by providing an empty string as option (`""`) | `"/"`                                      |
 | sortClassNamesClassAttributes         | Comma separated list of JSX attributes to sort tailwind classes in.                                                                                                                     | `"class,className,tw"`                     |
 | sortClassNamesSortFunctions           | Comma separated list of function names to sort classes in arguments.                                                                                                                    | `"clsx,classNames,cx"`                     |
+| sortClassNamesRemoveDuplicates        | Remove duplicate class names while sorting. Only exact duplicate tokens are removed, e.g. `sm:flex` and `md:flex` are treated as different classes.                                   | `false`                                    |
 
 ## parser support
 

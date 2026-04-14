@@ -1,5 +1,3 @@
-const fs = require('fs')
-const path = require('path')
 const prettier = require('prettier')
 
 const code = `
@@ -38,9 +36,25 @@ const code = `
   </body>
 </html>
 `
-const output = prettier.format(code, {
-	parser: 'html',
-	pluginSearchDirs: ['./'],
-	plugins: ['./prettier-plugin-sort-class-names'],
+async function run() {
+	const pluginPath = require.resolve('./prettier-plugin-sort-class-names.js')
+	const output = await prettier.format(code, {
+		parser: 'html',
+		plugins: [pluginPath],
+		sortClassNamesRemoveDuplicates: true,
+	})
+	console.log(output)
+
+	const variantsInput = '<div class="hover:bg-red-500 hover:bg-red-500 sm:hover:bg-red-500 sm:hover:bg-red-500"></div>'
+	const variantsOutput = await prettier.format(variantsInput, {
+		parser: 'html',
+		plugins: [pluginPath],
+		sortClassNamesRemoveDuplicates: true,
+	})
+	console.log(variantsOutput)
+}
+
+run().catch(error => {
+	console.error(error)
+	process.exit(1)
 })
-console.log(output)

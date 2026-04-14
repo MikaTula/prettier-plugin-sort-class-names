@@ -1,7 +1,7 @@
 import * as fs from 'fs'
 import options from './options'
 
-type Options = Record<keyof typeof options, string>
+type Options = Record<keyof typeof options, any>
 
 const prefixCache: Record<string, string[]> = {}
 
@@ -21,21 +21,23 @@ function getTwClasses(opts: Options) {
 	return twClasses
 }
 
-function classNameToIndex(
-	opts: Record<keyof typeof options, string>,
-	className: string
-) {
+function classNameToIndex(opts: Options, className: string) {
 	return getTwClasses(opts)[className] || -1
 }
 
+function shouldRemoveDuplicates(opts: Options) {
+	return (
+		opts.sortClassNamesRemoveDuplicates === true ||
+		opts.sortClassNamesRemoveDuplicates === 'true'
+	)
+}
+
 export type CreateSortClassList = (
-	opts: Record<keyof typeof options, string>
+	opts: Options
 ) => SortClassList
 export type SortClassList = (classes: string | string[]) => string[]
 
-export function defaultSortClassList(
-	opts: Record<keyof typeof options, string>
-): SortClassList {
+export function defaultSortClassList(opts: Options): SortClassList {
 	let prefixes = prefixCache[opts.sortClassNamesPrefixes]
 	if (!prefixes) {
 		prefixes = opts.sortClassNamesPrefixes.split(',')
@@ -49,6 +51,18 @@ export function defaultSortClassList(
 				.filter(Boolean)
 				// ignore slash classes (which are inserted by default by this plugin)
 				.filter(cn => cn !== opts.sortClassNamesUnknownClassesSeparator)
+		}
+
+		if (shouldRemoveDuplicates(opts)) {
+			const seen = new Set<string>()
+			classes = classes.filter(className => {
+				if (seen.has(className)) {
+					return false
+				}
+
+				seen.add(className)
+				return true
+			})
 		}
 
 		const orderedClassNameParts: string[] = []

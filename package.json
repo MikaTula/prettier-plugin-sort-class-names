@@ -2,11 +2,11 @@
 	"name": "@fuzed/prettier-plugin-sort-class-names",
 	"version": "3.0.1",
 	"description": "Sort classes with prettier",
-	"author": "Fréderick Van der Haegen <info@codefined.be>",
-	"homepage": "https://github.com/FuzedSolutions/prettier-plugin-sort-class-names",
+	"author": "Fréderick Van der Haegen <info@codefined.be> forked by MikaTula",
+	"homepage": "https://github.com/MikaTula/prettier-plugin-sort-class-names",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/FuzedSolutions/prettier-plugin-sort-class-names.git"
+		"url": "https://github.com/MikaTula/prettier-plugin-sort-class-names.git"
 	},
 	"keywords": [
 		"prettier",
@@ -19,15 +19,16 @@
 	"license": "MIT",
 	"private": false,
 	"scripts": {
-		"build": "rimraf ./lib && tsc"
+		"build": "rimraf ./lib && tsc",
+		"test": "node test.js"
 	},
 	"devDependencies": {
-		"@types/node": "^14.14.8",
-		"prettier": "^2.1.2",
+		"@types/node": "^20.12.7",
+		"prettier": "^3.8.2",
 		"rimraf": "^3.0.2",
-		"typescript": "^4.0.5"
+		"typescript": "^5.4.5"
 	},
 	"peerDependencies": {
-		"prettier": "2.x"
+		"prettier": ">=2.0.0 <4.0.0"
 	}
 }

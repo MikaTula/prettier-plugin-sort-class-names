@@ -1,6 +1,11 @@
-import prettierParserPostCSS from 'prettier/parser-postcss'
 import { CreateSortClassList, SortClassList } from '../sort-class-list'
 import loopNodes from '../utils/loop-nodes'
+import loadPrettierParser from '../utils/load-prettier-parser'
+
+const prettierParserPostCSS = loadPrettierParser(
+	'prettier/plugins/postcss',
+	'prettier/parser-postcss'
+)
 
 export default (cscl: CreateSortClassList) => ({
 	...prettierParserPostCSS.parsers.css,

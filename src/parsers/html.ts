@@ -1,5 +1,10 @@
-import prettierParserHTML from 'prettier/parser-html'
 import { CreateSortClassList, SortClassList } from '../sort-class-list'
+import loadPrettierParser from '../utils/load-prettier-parser'
+
+const prettierParserHTML = loadPrettierParser(
+	'prettier/plugins/html',
+	'prettier/parser-html'
+)
 
 export default (cscl: CreateSortClassList) => ({
 	...prettierParserHTML.parsers.html,
