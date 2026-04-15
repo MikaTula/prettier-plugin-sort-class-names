@@ -3,10 +3,10 @@
 	"version": "3.1.1",
 	"description": "Sort classes with prettier",
 	"author": "Fréderick Van der Haegen <info@codefined.be> forked by MikaTula",
-	"homepage": "https://github.com/MikaTula/prettier-plugin-sort-class-names",
+	"homepage": "https://github.com/mikatula/prettier-plugin-sort-class-names",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/MikaTula/prettier-plugin-sort-class-names.git"
+		"url": "https://github.com/mikatula/prettier-plugin-sort-class-names.git"
 	},
 	"keywords": [
 		"prettier",
